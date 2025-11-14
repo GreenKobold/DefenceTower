@@ -6,8 +6,8 @@ public enum StructureType
 public abstract class Structure : MonoBehaviour
 {
     StructureType type;
-    float HP = 200f;
-    float Defence = 1.0f;
+    protected float HP = 200f;
+    protected float Defence = 1.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -16,9 +16,16 @@ public abstract class Structure : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        if(HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    public void TakeDamage(float damageTaken)
+    {
+        HP -= damageTaken;
     }
     #region Getters & Setters
     public float GetHP()

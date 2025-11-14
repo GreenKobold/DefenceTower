@@ -4,18 +4,21 @@ using UnityEngine;
 
 public abstract class BaseTowerAI : Structure
 {
-    float towerCD = 0;
+    public float towerCD = 0;
     public float maxTowerCD = 12.0f;
     public Collider towerRadius;
-    List<BaseEnemyAI> enemyinRadius = new List<BaseEnemyAI>();
+    public List<BaseEnemyAI> enemyinRadius = new List<BaseEnemyAI>();
+
+    protected float damage = 20;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetStructureType(StructureType.Tower);
     }
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         CDTimer();
         if (DetectEnemy() && towerCD <= 0)
         {
@@ -27,6 +30,7 @@ public abstract class BaseTowerAI : Structure
     }
 
     public abstract void Attack();
+    //Towers require a rigid body for OnTriggerToWork
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Zombie"))
@@ -36,14 +40,14 @@ public abstract class BaseTowerAI : Structure
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Zombie"))
+        if (other.gameObject.CompareTag("Zombie"))
         {
             enemyinRadius.Remove(other.gameObject.GetComponent<BaseEnemyAI>());
         }
     }
-    bool DetectEnemy()
+    protected bool DetectEnemy()
     {
-        if (enemyinRadius.Count != 0)
+        if (enemyinRadius.Count > 0)
         {
             return true;
         }
@@ -51,7 +55,7 @@ public abstract class BaseTowerAI : Structure
             return false;
     }
 
-    void CDTimer()
+    protected void CDTimer()
     {
         if (towerCD > 0)
         {
@@ -59,11 +63,21 @@ public abstract class BaseTowerAI : Structure
         }
         else
         {
-            return;
         }
     }
-    void MaxTimerCD()
+    protected void MaxTimerCD()
     {
         towerCD = maxTowerCD;
     }
+
+    #region DamageGetters/Setters
+    protected float GetDamage()
+    {
+        return damage;
+    }
+    protected void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
+    #endregion
 }

@@ -6,17 +6,19 @@ using static UnityEngine.GraphicsBuffer;
 public abstract class BaseEnemyAI : MonoBehaviour
 {
     //Enemy Stats
-    float HP = 200f;
-    float speed = 5f;
+    public float HP = 200f;
+    public float speed = 5f;
+
+    protected float damage = 5f;
 
     //variables for pathfinding and decision making
     bool alertReceived = false;
     //targetPlayer = null
     Collider communicationRange;
     float visionRange;
-    float attackRange;
-    WallScript weakestWall = null;
-    WallScript targetWall = null;
+    public float attackRange = 3f;
+    protected WallScript weakestWall = null;
+    protected WallScript targetWall = null;
     //alertedBy = null
 
     // Lists for variables 
@@ -32,16 +34,19 @@ public abstract class BaseEnemyAI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         SenseEnvironment();
-
+        if(HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
         if (alertReceived == true)
         { 
             MoveTo(targetWall);
-            if (InAttackRange(targetWall.gameObject))
+            if (InAttackRange())
             {
-                Attack(targetWall);
+                Attack();
             }
         }
         weakestWall = FindWeakestWallInRange();
@@ -53,8 +58,8 @@ public abstract class BaseEnemyAI : MonoBehaviour
             //    AlertNearbyZombies(targetWall)
 
             MoveTo(targetWall);
-            if (InAttackRange(targetWall.gameObject)) ;
-            //    Attack(targetWall)
+            if (InAttackRange())
+                Attack();
             //    continue
         }
         //playerVisible = CheckForPlayerInRange()
@@ -67,7 +72,11 @@ public abstract class BaseEnemyAI : MonoBehaviour
         //else
         //    WanderOrPathToBase();
     }
-    public abstract void Attack(Structure wall);
+    public abstract void Attack();
+    public void TakeDamage(float damageTaken)
+    {
+        HP -= damageTaken;
+    }
     //Triggers used to add walls/zombies into list 
     private void OnTriggerEnter(Collider other)
     {
@@ -98,7 +107,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     #region Pathfinding
     WallScript FindWeakestWallInRange()
     {
-        WallScript testWall = new WallScript();
+        WallScript testWall = null;
         visibleWalls = GetWallsWithinRange(visionRange);
         if (visibleWalls.Count == 0)
             return null;
@@ -106,9 +115,16 @@ public abstract class BaseEnemyAI : MonoBehaviour
         {
             foreach (WallScript wall in visibleWalls)
             {
-                if(wall.GetHP() < testWall.GetHP())
+                if (testWall == null)
                 {
                     testWall = wall;
+                }
+                else
+                {
+                    if (wall.GetHP() < testWall.GetHP())
+                    {
+                        testWall = wall;
+                    }
                 }
             }
             return weakestWall;
@@ -124,11 +140,11 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
         return tempList;
     }
-    bool InAttackRange(GameObject wall)
+    bool InAttackRange()
     {
-        if (wall != null)
+        if (targetWall != null)
         {
-            if (Vector3.Distance(wall.transform.position, this.gameObject.transform.position) < attackRange)
+            if (Vector3.Distance(targetWall.transform.position, this.gameObject.transform.position) < attackRange)
             {
                 return true;
             }
@@ -150,14 +166,17 @@ public abstract class BaseEnemyAI : MonoBehaviour
         //return false;
 
     }
-    //void AlertNearbyZombies(target)
-    //{
-    //    for each zombie in range(communicationRange)
-    //        if (zombie.alertReceived == false)
-    //            zombie.alertReceived = true
-    //        zombie.targetWall = target
-    //        zombie.alertedBy = self
-    //}
+    void AlertNearbyZombies()
+    {
+        foreach (BaseEnemyAI zombie in zombiesInRange)
+        {
+            if (zombie.alertReceived == false)
+            {   zombie.alertReceived = true;
+                zombie.targetWall = targetWall;
+                //zombie.alertedBy = this.BaseEnemyAI;
+            }
+        }
+    }
     void MoveTo(WallScript wall)
     {
     //    Pathfind toward target using A* search
@@ -176,6 +195,13 @@ public abstract class BaseEnemyAI : MonoBehaviour
     {
         HP = health;
     }
-
+    float GetDamage()
+    {
+        return damage;
+    }
+    void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
     #endregion
 }
