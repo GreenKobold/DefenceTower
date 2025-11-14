@@ -1,0 +1,392 @@
+Using pre-set license
+Built from '6000.0/respin/6000.0.58f2-44b8bf3a32' branch; Version is '6000.0.58f2 (92dee566b325) revision 9625317'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) 64bit Core' Language: 'en' Physical Memory: 32676 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+Date: 2025-11-14T15:20:46Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.0.58f2\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+E:/DefenceTower
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+64772
+-job-worker-count
+7
+-background-job-worker-count
+8
+-gc-helper-count
+1
+-name
+AssetImport
+Successfully changed project path to: E:/DefenceTower
+E:/DefenceTower
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [26144]  Target information:
+
+Player connection [26144]  * "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 307494664 [EditorId] 307494664 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-K6N89I2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [26144]  * "[IP] 192.168.2.163 [Port] 0 [Flags] 2 [Guid] 307494664 [EditorId] 307494664 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-K6N89I2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [26144] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [26144] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 7
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.58f2 (92dee566b325)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.58f2/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/DefenceTower/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 SUPER (ID=0x2783)
+    Vendor:   NVIDIA
+    VRAM:     11999 MB
+    Driver:   32.0.15.7602
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.58f2/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.58f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.58f2/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56792
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.58f2/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.58f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.58f2/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.006512 seconds.
+- Loaded All Assemblies, in  0.377 seconds
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 230 ms
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.572 seconds
+Domain Reload Profiling: 945ms
+	BeginReloadAssembly (128ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (49ms)
+	LoadAllAssembliesAndSetupDomain (148ms)
+		LoadAssemblies (123ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (145ms)
+			TypeCache.Refresh (143ms)
+				TypeCache.ScanAssembly (131ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (572ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (543ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (326ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (57ms)
+			ProcessInitializeOnLoadAttributes (110ms)
+			ProcessInitializeOnLoadMethodAttributes (47ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.399 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.350 seconds
+Domain Reload Profiling: 744ms
+	BeginReloadAssembly (174ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (31ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (140ms)
+		LoadAssemblies (206ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (28ms)
+			TypeCache.Refresh (23ms)
+				TypeCache.ScanAssembly (15ms)
+			BuildScriptInfoCaches (3ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (350ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (235ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (14ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (75ms)
+			ProcessInitializeOnLoadAttributes (110ms)
+			ProcessInitializeOnLoadMethodAttributes (24ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 499 unused Assets / (115.9 KB). Loaded Objects now: 1000.
+Memory consumption went from 58.1 MB to 58.0 MB.
+Total: 5.132400 ms (FindLiveObjects: 0.144700 ms CreateObjectMapping: 0.032700 ms MarkObjects: 4.758400 ms  DeleteObjects: 0.195600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 7626.325641 seconds.
+  path: Assets/GameModels/OBJ format
+  artifactKey: Guid(36096c94d6abe8141ae6e3f9a887acc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format using Guid(36096c94d6abe8141ae6e3f9a887acc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'eb1f2ae9bea20d5d0939f3e923d7b00c') in 0.0054359 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/GameModels/OBJ format/brick-wall-curve-small.obj
+  artifactKey: Guid(d399d568cb639b549939d31911a89be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/brick-wall-curve-small.obj using Guid(d399d568cb639b549939d31911a89be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a77c609a2577595aa75a3b44743f0764') in 0.2537614 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/GameModels/OBJ format/candle-multiple.obj
+  artifactKey: Guid(bc04ad1d6e6ab28458ed1de404aa2e17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/candle-multiple.obj using Guid(bc04ad1d6e6ab28458ed1de404aa2e17) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd2b2b9b1739503d023400eddd09a6c88') in 0.0177402 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.108659 seconds.
+  path: Assets/GameModels/OBJ format/coffin-old.obj
+  artifactKey: Guid(1be55c5287f330a4caae7f16b92e71eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/coffin-old.obj using Guid(1be55c5287f330a4caae7f16b92e71eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2221247bfb5a61fdaad4694063074eff') in 0.0240983 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.390507 seconds.
+  path: Assets/GameModels/OBJ format/cross-wood.obj
+  artifactKey: Guid(103bf9164bc7bc04fb701d689e0b3ecf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/cross-wood.obj using Guid(103bf9164bc7bc04fb701d689e0b3ecf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ef4e9f579832580b6d010473b319c48e') in 0.0233853 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001823 seconds.
+  path: Assets/GameModels/OBJ format/crypt-door.obj
+  artifactKey: Guid(5ca66e03dd12a0c4097eaf95080f7caf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/crypt-door.obj using Guid(5ca66e03dd12a0c4097eaf95080f7caf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0fd6a4069dc7bb884536ee1cbf77ba58') in 0.0194467 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.014592 seconds.
+  path: Assets/GameModels/OBJ format/crypt-large-roof.obj
+  artifactKey: Guid(17ffe165b8964a245a8259f9ed8a2ac5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/crypt-large-roof.obj using Guid(17ffe165b8964a245a8259f9ed8a2ac5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e891b96f7318daead49df95b853c0005') in 0.0223162 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.017677 seconds.
+  path: Assets/GameModels/OBJ format/debris.obj
+  artifactKey: Guid(3ba58b25e031030439a4f53466e36d21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/debris.obj using Guid(3ba58b25e031030439a4f53466e36d21) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5e774d4ab089a0b00bd16d97cedc6be4') in 0.023306 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.108483 seconds.
+  path: Assets/GameModels/OBJ format/detail-plate.obj
+  artifactKey: Guid(0f202db3447a58f45acd1f43e753facc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/detail-plate.obj using Guid(0f202db3447a58f45acd1f43e753facc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dba17329446211f4c58c9393f7b58d1a') in 0.0219976 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.081866 seconds.
+  path: Assets/GameModels/OBJ format/fence-gate.obj
+  artifactKey: Guid(66724b78dea06964ca5875ef25156420) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/fence-gate.obj using Guid(66724b78dea06964ca5875ef25156420) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '47c31c46796ed5c5961c99b0dbf02097') in 0.0237249 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001237 seconds.
+  path: Assets/GameModels/OBJ format/gravestone-bevel.obj
+  artifactKey: Guid(8b9b176a2eac9b3449c6ba3539c4d4dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/gravestone-bevel.obj using Guid(8b9b176a2eac9b3449c6ba3539c4d4dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a912f128ef743ee4ed7dcc451f3972f6') in 0.0211355 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/GameModels/OBJ format/gravestone-decorative.obj
+  artifactKey: Guid(82a5d8605616ba245848f3cd7d8e3357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/gravestone-decorative.obj using Guid(82a5d8605616ba245848f3cd7d8e3357) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8a77e27116b5ce59f7b995998f4615a8') in 0.0224776 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042992 seconds.
+  path: Assets/GameModels/OBJ format/gravestone-round.obj
+  artifactKey: Guid(991ab844a1a2f7549ae616941ee64038) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/gravestone-round.obj using Guid(991ab844a1a2f7549ae616941ee64038) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c9de5573fb8639b4340f9503268b2a55') in 0.0207454 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.133117 seconds.
+  path: Assets/GameModels/OBJ format/hay-bale-bundled.obj
+  artifactKey: Guid(6d77e9f35f8adcb41911070d4de419ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/hay-bale-bundled.obj using Guid(6d77e9f35f8adcb41911070d4de419ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '99670db9e1ee2c3d402f15a9ba474d17') in 0.0247426 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/GameModels/OBJ format/iron-fence-border-curve.obj
+  artifactKey: Guid(89a80d87dbc7b0f459d5e1edf8abc34f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/iron-fence-border-curve.obj using Guid(89a80d87dbc7b0f459d5e1edf8abc34f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9b18bce052e3a7f23e56cf0c63b7ef4e') in 0.0179891 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/GameModels/OBJ format/iron-fence-damaged.obj
+  artifactKey: Guid(fce78f50c30099e45a8c838520cafadd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/iron-fence-damaged.obj using Guid(fce78f50c30099e45a8c838520cafadd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '68f6aa17e22372a35b3b36e5cc973983') in 0.0203032 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.012590 seconds.
+  path: Assets/GameModels/OBJ format/lightpost-all.obj
+  artifactKey: Guid(393455ea4f388434498c01a3685ab7d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/lightpost-all.obj using Guid(393455ea4f388434498c01a3685ab7d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dfbe0e9063c92d19f62ee086ccce9e1b') in 0.0185653 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.043877 seconds.
+  path: Assets/GameModels/OBJ format/pillar-large.obj
+  artifactKey: Guid(7e1a520596d1cd84f841b5abe2a9c77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/pillar-large.obj using Guid(7e1a520596d1cd84f841b5abe2a9c77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '98c95b91e829d5850caa3bda75740f3f') in 0.0236502 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.074783 seconds.
+  path: Assets/GameModels/OBJ format/pine.obj
+  artifactKey: Guid(b472a9b9eca0daa479c26cfd5fbe97eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/pine.obj using Guid(b472a9b9eca0daa479c26cfd5fbe97eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '57dd9a459c9c4622f9e3b8d21388f010') in 0.0210788 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.017602 seconds.
+  path: Assets/GameModels/OBJ format/pine-fall-crooked.obj
+  artifactKey: Guid(97e6730aff55c954bab1d2ddb373185e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/pine-fall-crooked.obj using Guid(97e6730aff55c954bab1d2ddb373185e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5b4092952700e2b12bb483e65b7dc1fe') in 0.0219471 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/GameModels/OBJ format/pumpkin-tall-carved.obj
+  artifactKey: Guid(b800c7a01075a9d41a456e898dd5c955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/pumpkin-tall-carved.obj using Guid(b800c7a01075a9d41a456e898dd5c955) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'abef8a536f17cfcb28fec9b7ece2c71d') in 0.021488 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/GameModels/OBJ format/shovel.obj
+  artifactKey: Guid(ec1341f3a3580944daa11bea08d38e0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/shovel.obj using Guid(ec1341f3a3580944daa11bea08d38e0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4bcf3985ebcd3ce72cdd1b9936d1979d') in 0.0191144 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/GameModels/OBJ format/stone-wall-damaged.obj
+  artifactKey: Guid(e3b8eb4af9c87324683138e9d2720fb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/stone-wall-damaged.obj using Guid(e3b8eb4af9c87324683138e9d2720fb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7890b3a27e25e12a8818d21e7e04d4f7') in 0.0220237 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.017150 seconds.
+  path: Assets/GameModels/OBJ format/trunk.obj
+  artifactKey: Guid(3ae8f6866c183e441a001952bd0c30c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameModels/OBJ format/trunk.obj using Guid(3ae8f6866c183e441a001952bd0c30c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'add6c6648039dcef282cfcbb82cb5dd9') in 0.0218071 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
