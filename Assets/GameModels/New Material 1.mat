@@ -83,7 +83,7 @@ Material:
     - _BlockedColor: {r: 1, g: 0, b: 0, a: 0.3}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GridColor: {r: 0, g: 1, b: 0.32155704, a: 1}
+    - _GridColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
     - _GridCount: {r: 20, g: 20, b: 0, a: 0}
     - _HoverColor: {r: 0, g: 1, b: 0, a: 0.3}
     - _HoveredCell: {r: -999, g: -999, b: 0, a: 0}
