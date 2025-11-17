@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4836738863974060532}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 2191604453261476549}
   - component: {fileID: 8146540661338520930}
   - component: {fileID: 8420563168931461986}
-  m_Layer: 0
+  - component: {fileID: 4169981992003544678}
+  m_Layer: 8
   m_Name: Zombie
   m_TagString: Zombie
   m_Icon: {fileID: 0}
@@ -142,23 +143,27 @@ MonoBehaviour:
   attackRange: 2
   attackDamage: 10
   attackCooldown: 2
+  forwardConeAngle: 120
+  stepAfterDestruction: 1.2
+  attackOffset: 1
+  debugMode: 1
   agent: {fileID: 8420563168931461986}
   animator: {fileID: 0}
   wallMask:
     serializedVersion: 2
     m_Bits: 64
-  buildingMask:
+  losBlockMask:
     serializedVersion: 2
-    m_Bits: 128
-  zombieMask:
-    serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   baseCore: {fileID: 0}
   alertReceived: 0
   alertedBy: {fileID: 0}
   targetWall: {fileID: 0}
   targetPlayer: {fileID: 0}
   isAlive: 1
+  isCommanded: 0
+  commandedDestination: {x: 0, y: 0, z: 0}
+  commandedTarget: {fileID: 0}
 --- !u!195 &8420563168931461986
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -181,6 +186,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4169981992003544678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552446279402584356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fafe622f44ee4d94da0164474f13d325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  currentHP: 0
 --- !u!1001 &498391938205863541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,9 +264,37 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6709288533808664266, guid: 35be223f6257a69439bb09475ef63409, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4471101393237809663, guid: 35be223f6257a69439bb09475ef63409, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3812755232247290390, guid: 35be223f6257a69439bb09475ef63409, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2511240423080479738, guid: 35be223f6257a69439bb09475ef63409, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 35be223f6257a69439bb09475ef63409, type: 3}
       propertyPath: m_Name
       value: character-zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 35be223f6257a69439bb09475ef63409, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416480541390562718, guid: 35be223f6257a69439bb09475ef63409, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505233913647550726, guid: 35be223f6257a69439bb09475ef63409, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

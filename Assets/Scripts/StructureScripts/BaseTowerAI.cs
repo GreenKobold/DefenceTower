@@ -6,53 +6,84 @@ public abstract class BaseTowerAI : Structure
 {
     public float towerCD = 0;
     public float maxTowerCD = 12.0f;
-    public Collider towerRadius;
-    public List<BaseEnemyAI> enemyinRadius = new List<BaseEnemyAI>();
+    public float towerRange = 10f;                
+    public LayerMask enemyMask;                 
+
+    public List<ZombieAI> enemyinRadius = new List<ZombieAI>();
 
     protected float damage = 20;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         SetStructureType(StructureType.Tower);
     }
-    // Update is called once per frame
+
     protected override void Update()
     {
         base.Update();
         CDTimer();
+
+        RefreshEnemiesInRange();     
+
         if (DetectEnemy() && towerCD <= 0)
         {
-            Attack();
-            MaxTimerCD();
+            ZombieAI target = GetLowestHPEnemy();
+            if (target != null)
+            {
+                AttackTarget(target);
+                MaxTimerCD();
+            }
         }
         else
             return;
     }
 
-    public abstract void Attack();
-    //Towers require a rigid body for OnTriggerToWork
-    private void OnTriggerEnter(Collider other)
+    void RefreshEnemiesInRange()
     {
-        if (other.gameObject.CompareTag("Zombie"))
+        enemyinRadius.Clear();
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, towerRange, enemyMask);
+
+        foreach (Collider c in hits)
         {
-            enemyinRadius.Add(other.gameObject.GetComponent<BaseEnemyAI>());
+            ZombieAI z = c.GetComponent<ZombieAI>();
+            if (z != null && z.isAlive)
+            {
+                enemyinRadius.Add(z);
+            }
         }
     }
-    private void OnTriggerExit(Collider other)
+
+    protected ZombieAI GetLowestHPEnemy()
     {
-        if (other.gameObject.CompareTag("Zombie"))
+        ZombieAI lowest = null;
+        float lowestHP = Mathf.Infinity;
+
+        foreach (ZombieAI z in enemyinRadius)
         {
-            enemyinRadius.Remove(other.gameObject.GetComponent<BaseEnemyAI>());
+            if (z == null) continue;
+
+            Health h = z.GetComponent<Health>();
+            if (h != null && h.currentHP < lowestHP)
+            {
+                lowestHP = h.currentHP;
+                lowest = z;
+            }
         }
+
+        return lowest;
     }
+
+    protected virtual void AttackTarget(ZombieAI target)
+    {
+        Attack(target);
+    }
+
+    public abstract void Attack(ZombieAI target);
+
     protected bool DetectEnemy()
     {
-        if (enemyinRadius.Count > 0)
-        {
-            return true;
-        }
-        else
-            return false;
+        return enemyinRadius.Count > 0;
     }
 
     protected void CDTimer()
@@ -60,9 +91,6 @@ public abstract class BaseTowerAI : Structure
         if (towerCD > 0)
         {
             towerCD -= Time.deltaTime;
-        }
-        else
-        {
         }
     }
     protected void MaxTimerCD()
@@ -80,4 +108,10 @@ public abstract class BaseTowerAI : Structure
         damage = newDamage;
     }
     #endregion
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, towerRange);
+    }
 }

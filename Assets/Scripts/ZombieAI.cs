@@ -18,7 +18,6 @@ public class ZombieAI : MonoBehaviour
     [Header("References")]
     public NavMeshAgent agent;
     public Animator animator;
-    public LayerMask zombieMask;
     public LayerMask wallMask;
     public LayerMask losBlockMask;
     public Transform baseCore;
@@ -49,88 +48,15 @@ public class ZombieAI : MonoBehaviour
 
         if (isCommanded)
         {
-            if (commandedTarget != null)
+            if (commandedTarget != null && commandedTarget.activeInHierarchy)
             {
-                if (!commandedTarget.activeInHierarchy)
-                {
-                    isCommanded = false;
-                    commandedTarget = null;
-                    Log("lost commanded target, reverting.");
-                }
-                else
-                {
-                    Vector3 dest = GetAttackPosition(commandedTarget.transform.position);
-                    ForceMove(dest);
-                    Log("following commanded target " + commandedTarget.name);
-                    if (InAttackRange(commandedTarget))
-                        StopAndAttack(commandedTarget);
-                    return;
-                }
+                Vector3 pos = GetAttackPosition(commandedTarget.transform.position);
+                ForceMove(pos);
+                if (InAttackRange(commandedTarget)) StopAndAttack(commandedTarget);
             }
             else
             {
-                Log("moving to commanded destination");
                 ForceMove(commandedDestination);
-                return;
-            }
-        }
-
-        if (targetWall != null && !targetWall.activeInHierarchy)
-        {
-            Log("target wall destroyed, moving slightly forward to reacquire.");
-            Vector3 forwardStep = transform.position + transform.forward * stepAfterDestruction;
-            targetWall = null;
-            ForceMove(forwardStep);
-            return;
-        }
-
-        GameObject wallTarget = FindVisibleWall();
-        if (wallTarget != null)
-        {
-            hasFoundBase = true;
-            targetWall = wallTarget;
-            float dist = Vector3.Distance(transform.position, wallTarget.transform.position);
-            Log("sees wall " + wallTarget.name + " at " + dist);
-            if (dist > attackRange)
-            {
-                Vector3 attackPos = GetAttackPosition(wallTarget.transform.position);
-                ForceMove(attackPos);
-                Log("pathing to wall " + wallTarget.name + " via attack position " + attackPos);
-            }
-            else
-            {
-                StopAndAttack(wallTarget);
-                Log("attacking wall " + wallTarget.name);
-            }
-            return;
-        }
-
-        if (CanSeeCore())
-        {
-            hasFoundBase = true;
-            Vector3 attackPos = GetAttackPosition(baseCore.position);
-            Log("sees core");
-            ForceMove(attackPos);
-            if (InAttackRange(baseCore.gameObject))
-                StopAndAttack(baseCore.gameObject);
-            return;
-        }
-
-        if (alertReceived && targetWall != null)
-        {
-            hasFoundBase = true;
-            float dist = Vector3.Distance(transform.position, targetWall.transform.position);
-            Log("alert received, target wall " + targetWall.name);
-            if (dist > attackRange)
-            {
-                Vector3 attackPos = GetAttackPosition(targetWall.transform.position);
-                ForceMove(attackPos);
-                Log("pathing (alert) to " + targetWall.name);
-            }
-            else
-            {
-                StopAndAttack(targetWall);
-                Log("attacking (alert) wall " + targetWall.name);
             }
             return;
         }
@@ -141,42 +67,73 @@ public class ZombieAI : MonoBehaviour
             hasFoundBase = true;
             targetPlayer = player;
             AlertNearbyZombies(player);
-            float dist = Vector3.Distance(transform.position, player.transform.position);
-            Log("sees player");
-            if (dist > attackRange)
+            Vector3 pos = GetAttackPosition(player.transform.position);
+            if (!InAttackRange(player)) ForceMove(pos);
+            else StopAndAttack(player);
+            return;
+        }
+
+        bool coreAlerted = alertReceived && targetWall == (baseCore != null ? baseCore.gameObject : null);
+        if (CanSeeCore() || coreAlerted)
+        {
+            hasFoundBase = true;
+            if (CanSeeCore() && alertedBy == null && baseCore != null)
+                AlertNearbyZombies(baseCore.gameObject);
+            if (baseCore != null)
             {
-                Vector3 attackPos = GetAttackPosition(player.transform.position);
-                ForceMove(attackPos);
-                Log("pathing to player");
+                Vector3 pos = GetAttackPosition(baseCore.position);
+                if (!InAttackRange(baseCore.gameObject)) ForceMove(pos);
+                else StopAndAttack(baseCore.gameObject);
             }
-            else
-            {
-                StopAndAttack(player);
-                Log("attacking player");
-            }
+            return;
+        }
+
+        if (alertReceived && targetWall != null && targetWall.activeInHierarchy && targetWall != (baseCore != null ? baseCore.gameObject : null))
+        {
+            hasFoundBase = true;
+            Vector3 pos = GetAttackPosition(targetWall.transform.position);
+            if (!InAttackRange(targetWall)) ForceMove(pos);
+            else StopAndAttack(targetWall);
+            return;
+        }
+
+        if (targetWall != null && !targetWall.activeInHierarchy)
+        {
+            Vector3 forwardStep = transform.position + transform.forward * stepAfterDestruction;
+            targetWall = null;
+            alertReceived = false;
+            ForceMove(forwardStep);
+            return;
+        }
+
+        GameObject structureTarget = FindVisibleStructure();
+        if (structureTarget != null)
+        {
+            hasFoundBase = true;
+            targetWall = structureTarget;
+            float dist = Vector3.Distance(transform.position, structureTarget.transform.position);
+            Log("sees structure " + structureTarget.name + " at " + dist);
+            Vector3 pos = GetAttackPosition(structureTarget.transform.position);
+            if (!InAttackRange(structureTarget)) ForceMove(pos);
+            else StopAndAttack(structureTarget);
             return;
         }
 
         if (!hasFoundBase)
         {
             if (agent.remainingDistance < 1f || !agent.hasPath)
-            {
-                Log("wandering toward center");
                 ForceMove(Vector3.zero);
-            }
         }
         else
         {
             if (agent.remainingDistance < 0.5f && !agent.pathPending)
             {
-                Log("idle but has found base, scanning for next wall");
-                GameObject newWall = FindVisibleWall();
-                if (newWall != null)
+                GameObject newStruct = FindVisibleStructure();
+                if (newStruct != null)
                 {
-                    targetWall = newWall;
-                    Vector3 attackPos = GetAttackPosition(newWall.transform.position);
-                    ForceMove(attackPos);
-                    Log("reacquired wall " + newWall.name);
+                    targetWall = newStruct;
+                    Vector3 pos = GetAttackPosition(newStruct.transform.position);
+                    ForceMove(pos);
                 }
             }
         }
@@ -186,18 +143,15 @@ public class ZombieAI : MonoBehaviour
     {
         Vector3 dir = (targetPos - transform.position).normalized;
         Vector3 adjusted = targetPos - dir * attackOffset;
-
         NavMeshHit hit;
         if (NavMesh.SamplePosition(adjusted, out hit, 1.5f, NavMesh.AllAreas))
             return hit.position;
-
         for (float i = 0.2f; i <= 1.0f; i += 0.2f)
         {
             Vector3 closer = targetPos - dir * (attackOffset - i);
             if (NavMesh.SamplePosition(closer, out hit, 1.5f, NavMesh.AllAreas))
                 return hit.position;
         }
-
         return transform.position;
     }
 
@@ -205,9 +159,8 @@ public class ZombieAI : MonoBehaviour
     {
         if (target == null) return false;
         float dist = Vector3.Distance(transform.position, target.transform.position);
-        return dist <= attackRange * 1.25f; 
+        return dist <= attackRange * 1.25f;
     }
-
 
     void StopAndAttack(GameObject target)
     {
@@ -217,25 +170,49 @@ public class ZombieAI : MonoBehaviour
         Attack(target);
     }
 
-    GameObject FindVisibleWall()
+    GameObject FindVisibleStructure()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, visionRange, wallMask);
-        GameObject best = null;
-        float lowestHP = Mathf.Infinity;
+        GameObject bestBuilding = null;
+        float bestBuildingHP = Mathf.Infinity;
+        GameObject bestWall = null;
+        float bestWallHP = Mathf.Infinity;
+
         foreach (Collider c in hits)
         {
             if (c == null) continue;
             Vector3 dir = (c.transform.position - transform.position).normalized;
             float angle = Vector3.Angle(transform.forward, dir);
             if (angle > forwardConeAngle * 0.5f) continue;
+
             Health h = c.GetComponent<Health>();
-            if (h != null && h.currentHP < lowestHP)
+            if (h == null) continue;
+
+            if (c.CompareTag("Building"))
             {
-                lowestHP = h.currentHP;
-                best = c.gameObject;
+                if (h.currentHP < bestBuildingHP)
+                {
+                    bestBuildingHP = h.currentHP;
+                    bestBuilding = c.gameObject;
+                }
+            }
+            else if (c.CompareTag("Wall"))
+            {
+                if (h.currentHP < bestWallHP)
+                {
+                    bestWallHP = h.currentHP;
+                    bestWall = c.gameObject;
+                }
             }
         }
-        return best;
+
+        if (bestBuilding != null)
+        {
+            Log("prioritizing building " + bestBuilding.name + " over walls");
+            return bestBuilding;
+        }
+
+        return bestWall;
     }
 
     bool CanSeeCore()
@@ -271,9 +248,11 @@ public class ZombieAI : MonoBehaviour
 
     void AlertNearbyZombies(GameObject target)
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, communicationRange, zombieMask);
+        if (alertedBy != null) return;
+        Collider[] hits = Physics.OverlapSphere(transform.position, communicationRange);
         foreach (Collider c in hits)
         {
+            if (c.gameObject == gameObject) continue;
             ZombieAI z = c.GetComponent<ZombieAI>();
             if (z != null && !z.alertReceived)
             {
@@ -311,6 +290,12 @@ public class ZombieAI : MonoBehaviour
     void Log(string msg)
     {
         if (debugMode) Debug.Log(name + " - " + msg);
+    }
+
+    public float GetCurrentHP()
+    {
+        Health h = GetComponent<Health>();
+        return h != null ? h.currentHP : 99999f;
     }
 
     void OnDrawGizmosSelected()

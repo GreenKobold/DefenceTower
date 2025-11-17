@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class CrossBowTower : BaseTowerAI
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
-    override public void Attack()
+
+    public override void Attack(ZombieAI target)
     {
-        
-        enemyinRadius[0].TakeDamage(damage);
+        if (target == null) return;
+
+        Health h = target.GetComponent<Health>();
+        if (h != null)
+            h.TakeDamage(damage);
     }
 }

@@ -11,7 +11,7 @@ public class WaveGeneration : MonoBehaviour
     int currentWave = 0;
     short totalWaveNumber = 0;
     float difficultyValue = 2.0f;
-    List<BaseEnemyAI> AI = new List<BaseEnemyAI>();
+    List<ZombieAI> AI = new List<ZombieAI>();
     List<GameObject> ZombieSpawnPoints = new List<GameObject>();
     ////    waveNumber = 0
 
